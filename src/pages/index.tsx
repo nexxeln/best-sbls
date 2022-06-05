@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   return (
@@ -9,8 +8,6 @@ const Home: NextPage = () => {
         <h1 className="text-4xl font-medium text-center uppercase">
           What is the best Some Boring Love Stories album?
         </h1>
-
-        {/* <VoteImage /> */}
       </div>
     </>
   );

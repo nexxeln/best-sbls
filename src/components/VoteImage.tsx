@@ -20,7 +20,7 @@ const VoteImage: React.FC<VoteImageProps> = ({ src, alt, slug }) => {
   return (
     <div className="flex flex-col p-3 transition-all duration-200 cursor-pointer hover:scale-105">
       <Image src={src} alt={alt} width={250} height={250} />
-      <p className="px-2 pt-1 text-center text-neutral-300">{slug}</p>
+      <p className="px-2 pt-1 pb-3 text-center text-neutral-300">{slug}</p>
     </div>
   );
 };

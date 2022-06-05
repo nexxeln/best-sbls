@@ -1,7 +1,12 @@
 import Image from "next/image";
 
 type VoteImageProps = {
-  src: string;
+  src:
+    | "/images/part-1.png"
+    | "/images/part-2.png"
+    | "/images/part-3.png"
+    | "/images/part-4.png"
+    | "/images/part-5.png";
   alt: string;
 };
 

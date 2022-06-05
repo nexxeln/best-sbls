@@ -1,5 +1,10 @@
-import { createRouter } from "../createRouter";
+import superjson from "superjson";
 
-export const appRouter = createRouter();
+import { createRouter } from "../createRouter";
+import { voteRouter } from "./vote";
+
+export const appRouter = createRouter()
+  .transformer(superjson)
+  .merge("votes.", voteRouter);
 
 export type AppRouter = typeof appRouter;

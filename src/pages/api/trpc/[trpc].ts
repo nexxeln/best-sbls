@@ -1,29 +1,9 @@
-import * as trpc from "@trpc/server";
-import * as trpcNext from "@trpc/server/adapters/next";
-import superjson from "superjson";
-import { z } from "zod";
+import { createNextApiHandler } from "@trpc/server/adapters/next";
 
-export const appRouter = trpc
-  .router()
-  .transformer(superjson)
-  .query("hello", {
-    input: z
-      .object({
-        text: z.string().nullish(),
-      })
-      .nullish(),
-    resolve({ input }) {
-      return {
-        greeting: `Hello ${input?.text ?? "world"}`,
-      };
-    },
-  });
+import { appRouter } from "../../../server/routers/app";
+import { createContext } from "../../../server/context";
 
-// export type definition of API
-export type AppRouter = typeof appRouter;
-
-// export API handler
-export default trpcNext.createNextApiHandler({
+export default createNextApiHandler({
   router: appRouter,
-  createContext: () => null,
+  createContext,
 });

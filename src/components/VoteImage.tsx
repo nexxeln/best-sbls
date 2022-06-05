@@ -7,7 +7,7 @@ type VoteImageProps = {
     | "/images/part-3.png"
     | "/images/part-4.png"
     | "/images/part-5.png";
-  alt: string;
+  alt: "part-1" | "part-2" | "part-3" | "part-4" | "part-5";
 };
 
 const VoteImage: React.FC<VoteImageProps> = ({ src, alt }) => {

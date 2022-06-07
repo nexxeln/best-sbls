@@ -13,8 +13,8 @@ const ResultRow: React.FC<ResultRowProps> = ({
   percentage,
 }) => {
   return (
-    <div className="flex items-center justify-center gap-16 p-4 m-4 border-2 rounded border-neutral-400">
-      <Image src={src} alt={alt} width={100} height={100} />
+    <div className="flex items-center justify-between gap-16 p-2 mx-4 border border-gray-600">
+      <Image src={src} alt={alt} width={80} height={80} />
       <h1 className="text-xs md:text-lg text-neutral-300">{slug}</h1>
       <p className="text-neutral-300">{percentage}%</p>
     </div>

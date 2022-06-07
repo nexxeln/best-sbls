@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
-import ResultRow from "../components/Results/ResultRow";
 
 import { prisma } from "../db/client";
+import ResultGrid from "../components/Results/ResultGrid";
 
 const getVotes = async () => {
   const votes = await prisma.vote.groupBy({
@@ -27,12 +27,7 @@ const Home: NextPage = ({ percentages }: any) => {
           Results
         </h1>
 
-        <ResultRow
-          src="/images/part-1.png"
-          alt="part-1"
-          slug="Some Boring, Love Stories"
-          percentage={90}
-        />
+        <ResultGrid />
       </div>
     </>
   );

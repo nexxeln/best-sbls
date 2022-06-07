@@ -3,6 +3,40 @@ import type { GetStaticProps, NextPage } from "next";
 import { prisma } from "../db/client";
 import ResultGrid from "../components/Results/ResultGrid";
 
+type Percentages = {
+  percentages: {
+    votes1: number;
+    votes2: number;
+    votes3: number;
+    votes4: number;
+    votes5: number;
+  };
+};
+
+const Home: NextPage<Percentages> = ({ percentages }) => {
+  console.log(percentages);
+  return (
+    <>
+      <div className="flex flex-col items-center min-h-screen mx-auto">
+        <div className="mt-6" />
+        <h1 className="text-4xl font-medium text-center uppercase text-neutral-300">
+          Results
+        </h1>
+
+        <ResultGrid
+          votes1={percentages.votes1}
+          votes2={percentages.votes2}
+          votes3={percentages.votes3}
+          votes4={percentages.votes4}
+          votes5={percentages.votes5}
+        />
+      </div>
+    </>
+  );
+};
+
+export default Home;
+
 const getVotes = async () => {
   const votes = await prisma.vote.groupBy({
     by: ["choice"],
@@ -16,24 +50,6 @@ const getVotes = async () => {
 
   return votes;
 };
-
-const Home: NextPage = ({ percentages }: any) => {
-  console.log(percentages);
-  return (
-    <>
-      <div className="flex flex-col items-center min-h-screen mx-auto">
-        <div className="mt-6" />
-        <h1 className="text-4xl font-medium text-center uppercase text-neutral-300">
-          Results
-        </h1>
-
-        <ResultGrid />
-      </div>
-    </>
-  );
-};
-
-export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const votes = await getVotes();

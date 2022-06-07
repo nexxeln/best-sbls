@@ -11,10 +11,7 @@ datasource db {
 }
 
 model Vote {
-  id         String   @id @default(cuid())
-  createdAt  DateTime @default(now())
-  choice     Int
-  voterToken String   @db.String(255)
-
-  @@index([voterToken])
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  choice    Int
 }

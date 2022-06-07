@@ -12,7 +12,6 @@ specifiers:
   autoprefixer: ^10.4.7
   eslint: 8.15.0
   eslint-config-next: 12.1.6
-  nanoid: ^3.3.4
   next: 12.1.6
   postcss: ^8.4.14
   prisma: ^3.14.0
@@ -31,7 +30,6 @@ dependencies:
   '@trpc/next': 9.24.0_243l3y4vcivzr5wzg5cx5ugih4
   '@trpc/react': 9.24.0_6u3gonn2tqf6n2b4ttstdly334
   '@trpc/server': 9.24.0
-  nanoid: 3.3.4
   next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0

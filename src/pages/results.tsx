@@ -14,7 +14,6 @@ type Percentages = {
 };
 
 const Home: NextPage<Percentages> = ({ percentages }) => {
-  console.log(percentages);
   return (
     <>
       <div className="flex flex-col items-center min-h-screen mx-auto">

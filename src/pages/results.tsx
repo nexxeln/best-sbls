@@ -3,68 +3,17 @@ import type { GetStaticProps, NextPage } from "next";
 import { prisma } from "../db/client";
 
 const getVotes = async () => {
-  const votes1 = await prisma.vote.count({
-    where: {
-      choice: {
-        equals: 1,
-      },
+  const votes = await prisma.vote.groupBy({
+    by: ["choice"],
+    _count: {
+      choice: true,
+    },
+    orderBy: {
+      choice: "asc",
     },
   });
 
-  const votes2 = await prisma.vote.count({
-    where: {
-      choice: {
-        equals: 2,
-      },
-    },
-  });
-  const votes3 = await prisma.vote.count({
-    where: {
-      choice: {
-        equals: 3,
-      },
-    },
-  });
-  const votes4 = await prisma.vote.count({
-    where: {
-      choice: {
-        equals: 4,
-      },
-    },
-  });
-  const votes5 = await prisma.vote.count({
-    where: {
-      choice: {
-        equals: 5,
-      },
-    },
-  });
-
-  return {
-    votes1,
-    votes2,
-    votes3,
-    votes4,
-    votes5,
-  };
-};
-
-const computePercentages = (
-  votes1: number,
-  votes2: number,
-  votes3: number,
-  votes4: number,
-  votes5: number
-) => {
-  const totalVotes = votes1 + votes2 + votes3 + votes4 + votes5;
-
-  return {
-    votes1: Math.round((votes1 / totalVotes) * 100),
-    votes2: Math.round((votes2 / totalVotes) * 100),
-    votes3: Math.round((votes3 / totalVotes) * 100),
-    votes4: Math.round((votes4 / totalVotes) * 100),
-    votes5: Math.round((votes5 / totalVotes) * 100),
-  };
+  return votes;
 };
 
 const Home: NextPage = ({ percentages }: any) => {
@@ -84,19 +33,30 @@ const Home: NextPage = ({ percentages }: any) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { votes1, votes2, votes3, votes4, votes5 } = await getVotes();
-  const percentages = computePercentages(
-    votes1,
-    votes2,
-    votes3,
-    votes4,
-    votes5
-  );
+  const votes = await getVotes();
+
+  const votes1num = votes[0]!._count.choice;
+  const votes2num = votes[1]!._count.choice;
+  const votes3num = votes[2]!._count.choice;
+  const votes4num = votes[3]!._count.choice;
+  const votes5num = votes[4]!._count.choice;
+
+  const totalVotes = votes1num + votes2num + votes3num + votes4num + votes5num;
+  const votes1 = ((votes1num / totalVotes) * 100).toFixed(2);
+  const votes2 = ((votes2num / totalVotes) * 100).toFixed(2);
+  const votes3 = ((votes3num / totalVotes) * 100).toFixed(2);
+  const votes4 = ((votes4num / totalVotes) * 100).toFixed(2);
+  const votes5 = ((votes5num / totalVotes) * 100).toFixed(2);
 
   return {
     props: {
-      percentages,
+      percentages: {
+        votes1,
+        votes2,
+        votes3,
+        votes4,
+        votes5,
+      },
     },
-    // revalidate: 6 * 60 * 60,
   };
 };

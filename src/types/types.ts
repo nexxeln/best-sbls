@@ -1,4 +1,4 @@
-export type ImageAndSlug = {
+export interface ImageAndSlug {
   src:
     | "/images/part-1.png"
     | "/images/part-2.png"
@@ -12,4 +12,4 @@ export type ImageAndSlug = {
     | "Some Boring, Love Stories, Pt.3"
     | "some boring love stories, pt.4"
     | "some boring love stories pt 5";
-};
+}

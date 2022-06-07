@@ -11,7 +11,9 @@ const Home: NextPage = () => {
           What is the best Some Boring Love Stories album?
         </h1>
 
-        <p className="mt-4 text-neutral-400">Click on the images to vote</p>
+        <p className="mt-4 text-neutral-400">
+          Click on the images to vote. Please be cool and vote only once!
+        </p>
 
         <div className="my-6 md:my-16" />
 

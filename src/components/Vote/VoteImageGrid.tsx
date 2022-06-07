@@ -1,10 +1,19 @@
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
+
 import { trpc } from "../../utils/trpc";
 import VoteImage from "./VoteImage";
+
+const notify = () => toast("Casting Vote...");
 
 const VoteImageGrid = () => {
   const router = useRouter();
   const createVote = trpc.useMutation(["votes.add-vote"]);
+
+  if (createVote.status === "loading") {
+    notify();
+    return <Toaster />;
+  }
 
   if (createVote.status === "success") {
     router.push("/results");

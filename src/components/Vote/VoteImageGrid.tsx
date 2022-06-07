@@ -61,7 +61,7 @@ const VoteImageGrid = () => {
           />
         </div>
       </div>
-      <Toaster />;
+      <Toaster />
     </>
   );
 };

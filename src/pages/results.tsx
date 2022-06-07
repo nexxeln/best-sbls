@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+import ResultRow from "../components/Results/ResultRow";
 
 import { prisma } from "../db/client";
 
@@ -20,11 +21,18 @@ const Home: NextPage = ({ percentages }: any) => {
   console.log(percentages);
   return (
     <>
-      <div className="flex flex-col items-center w-4/5 min-h-screen mx-auto">
+      <div className="flex flex-col items-center min-h-screen mx-auto">
         <div className="mt-6" />
         <h1 className="text-4xl font-medium text-center uppercase text-neutral-300">
           Results
         </h1>
+
+        <ResultRow
+          src="/images/part-1.png"
+          alt="part-1"
+          slug="Some Boring, Love Stories"
+          percentage={90}
+        />
       </div>
     </>
   );

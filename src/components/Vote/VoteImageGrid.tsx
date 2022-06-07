@@ -1,12 +1,13 @@
+import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
 import VoteImage from "./VoteImage";
 
 const VoteImageGrid = () => {
+  const router = useRouter();
   const createVote = trpc.useMutation(["votes.add-vote"]);
 
   if (createVote.status === "success") {
-    // temporary
-    return <h1 className="text-2xl text-neutral-200">Thank you for voting!</h1>;
+    router.push("/results");
   }
 
   return (

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ImageAndSlug } from "../types/types";
+import { ImageAndSlug } from "../../types/types";
 
 const VoteImage: React.FC<ImageAndSlug> = ({ src, alt, slug }) => {
   return (

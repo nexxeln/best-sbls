@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
-import VoteImageGrid from "../components/VoteImageGrid";
+
+import VoteImageGrid from "../components/Vote/VoteImageGrid";
 
 const Home: NextPage = () => {
   return (

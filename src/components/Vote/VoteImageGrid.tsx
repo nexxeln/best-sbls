@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { trpc } from "../../utils/trpc";
 import VoteImage from "./VoteImage";
 
-const notify = () => toast("Casting Vote...");
+const notify = () => toast.loading("Casting Vote");
 
 const VoteImageGrid = () => {
   const router = useRouter();
@@ -15,6 +15,7 @@ const VoteImageGrid = () => {
   }
 
   if (createVote.status === "success") {
+    toast.dismiss();
     router.push("/results");
   }
 

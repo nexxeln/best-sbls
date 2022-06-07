@@ -18,10 +18,12 @@ const Home: NextPage<Percentages> = ({ percentages }) => {
   return (
     <>
       <div className="flex flex-col items-center min-h-screen mx-auto">
-        <div className="mt-6" />
+        <div className="mt-4" />
         <h1 className="text-4xl font-medium text-center uppercase text-neutral-300">
           Results
         </h1>
+
+        <div className="my-10 md:my-3" />
 
         <ResultGrid
           votes1={percentages.votes1}

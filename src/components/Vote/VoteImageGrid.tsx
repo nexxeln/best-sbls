@@ -4,7 +4,14 @@ import toast, { Toaster } from "react-hot-toast";
 import { trpc } from "../../utils/trpc";
 import VoteImage from "./VoteImage";
 
-const notify = () => toast.loading("Casting Vote");
+const notify = () =>
+  toast.loading("Casting Vote", {
+    style: {
+      borderRadius: "10px",
+      background: "#333",
+      color: "#fff",
+    },
+  });
 
 const VoteImageGrid = () => {
   const router = useRouter();
